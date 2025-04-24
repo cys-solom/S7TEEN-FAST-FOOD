@@ -1,0 +1,230 @@
+
+/* Import Cairo font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 30 35% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 35% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 35% 18%;
+
+    --primary: 24 65% 45%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 40 30% 96%;
+    --secondary-foreground: 24 65% 45%;
+
+    --muted: 40 30% 96%;
+    --muted-foreground: 30 25% 45%;
+
+    --accent: 28 85% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 30% 92%;
+    --input: 40 30% 92%;
+    --ring: 24 65% 45%;
+
+    --radius: 0.6rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 20% 12%;
+    --foreground: 40 30% 98%;
+
+    --card: 30 20% 18%;
+    --card-foreground: 40 30% 98%;
+
+    --popover: 30 20% 18%;
+    --popover-foreground: 40 30% 98%;
+
+    --primary: 24 60% 55%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 30 20% 22%;
+    --secondary-foreground: 40 30% 98%;
+
+    --muted: 30 20% 22%;
+    --muted-foreground: 40 30% 85%;
+
+    --accent: 28 75% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 40 30% 98%;
+
+    --border: 30 20% 28%;
+    --input: 30 20% 28%;
+    --ring: 24 60% 55%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-arabic;
+    direction: rtl;
+  }
+}
+
+@layer components {
+  .category-card {
+    @apply rounded-lg p-6 shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.02];
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold text-primary mb-6 relative inline-block after:content-[''] after:absolute after:w-[50%] after:h-1 after:bg-accent after:right-0 after:bottom-0 pb-2 font-cairo;
+  }
+  
+  .nav-link {
+    @apply relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:right-0 after:bottom-0 hover:after:w-full after:transition-all after:duration-300;
+  }
+  
+  .whatsapp-btn {
+    @apply bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2;
+  }
+  
+  .form-input {
+    @apply w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-primary text-right;
+  }
+
+  .animated-bg {
+    @apply relative overflow-hidden before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:animate-shimmer;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 shadow-lg;
+  }
+}
+
+/* Additional Font Styles */
+.font-cairo {
+  font-family: 'Cairo', 'Noto Sans Arabic', sans-serif;
+}
+
+.font-tajawal {
+  font-family: 'Tajawal', 'Noto Sans Arabic', sans-serif;
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.4s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Floating Label Styles */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label,
+.floating-label textarea:focus + label,
+.floating-label textarea:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.85);
+  color: theme('colors.primary.DEFAULT');
+  background-color: white;
+  padding: 0 0.25rem;
+}
+
+.floating-label label {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+  padding: 0 0.25rem;
+  transform-origin: right top;
+}
+
+/* Modern scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.secondary.DEFAULT');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.primary.DEFAULT');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.accent.DEFAULT');
+}
